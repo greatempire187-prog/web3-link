@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3 Wallet App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Registration Form -->
+        <div id="registrationForm" class="form-container">
+            <div class="form-header">
+                <h1>Create Account</h1>
+                <p>Join the Web3 revolution</p>
+            </div>
+            <form id="regForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                    <span class="error-message" id="usernameError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-input-container">
+                        <input type="password" id="password" name="password" required>
+                        <button type="button" class="password-toggle" data-target="password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="password-input-container">
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        <button type="button" class="password-toggle" data-target="confirmPassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <span class="error-message" id="confirmPasswordError"></span>
+                </div>
+                <button type="submit" class="btn-primary">Sign Up</button>
+            </form>
+            <div class="form-footer">
+                <p>Already have an account? <a href="#" id="loginLink">Sign In</a></p>
+            </div>
+        </div>
+
+        <!-- Email Verification -->
+        <div id="emailVerification" class="form-container hidden">
+            <div class="form-header">
+                <h1>Verify Email</h1>
+                <p>We sent a verification code to your email</p>
+            </div>
+            <form id="verificationForm">
+                <div class="form-group">
+                    <label for="verificationCode">Verification Code</label>
+                    <input type="text" id="verificationCode" name="verificationCode" placeholder="Enter 6-digit code" maxlength="6" required>
+                    <span class="error-message" id="verificationError"></span>
+                </div>
+                <button type="submit" class="btn-primary">Verify Email</button>
+                <button type="button" class="btn-secondary" id="resendCode">Resend Code</button>
+            </form>
+        </div>
+
+        <!-- Login Form -->
+        <div id="loginForm" class="form-container hidden">
+            <div class="form-header">
+                <h1>Welcome Back</h1>
+                <p>Sign in to your account</p>
+            </div>
+            <form id="signInForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" name="loginEmail" required>
+                    <span class="error-message" id="loginEmailError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <div class="password-input-container">
+                        <input type="password" id="loginPassword" name="loginPassword" required>
+                        <button type="button" class="password-toggle" data-target="loginPassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <span class="error-message" id="loginPasswordError"></span>
+                </div>
+                <button type="submit" class="btn-primary">Sign In</button>
+            </form>
+            <div class="form-footer">
+                <p>Don't have an account? <a href="#" id="registerLink">Sign Up</a></p>
+            </div>
+        </div>
+
+        <!-- User Dashboard -->
+        <div id="dashboard" class="dashboard-container hidden">
+            <header class="dashboard-header">
+                <div class="header-content">
+                    <h1>Web3 Dashboard</h1>
+                    <div class="user-info">
+                        <span id="userEmail"></span>
+                        <button id="logoutBtn" class="btn-secondary">Logout</button>
+                    </div>
+                </div>
+            </header>
+            
+            <main class="dashboard-main">
+                <section class="wallet-section">
+                    <h2>Connect Wallet</h2>
+                    <div class="wallet-options">
+                        <button id="metamaskBtn" class="wallet-btn">
+                            <i class="fab fa-ethereum"></i>
+                            <span>MetaMask</span>
+                        </button>
+                        <button id="coinbaseBtn" class="wallet-btn">
+                            <i class="fas fa-wallet"></i>
+                            <span>Coinbase Wallet</span>
+                        </button>
+                    </div>
+                    <div id="walletInfo" class="wallet-info hidden">
+                        <div class="wallet-address">
+                            <span>Connected: </span>
+                            <span id="walletAddress"></span>
+                        </div>
+                        <button id="disconnectWallet" class="btn-secondary">Disconnect</button>
+                    </div>
+                </section>
+
+                <section class="dashboard-stats">
+                    <h2>Account Overview</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Wallet Status</h3>
+                            <p id="walletStatus">Not Connected</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Email Verified</h3>
+                            <p id="emailStatus">Verified</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Account Type</h3>
+                            <p>Standard</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
